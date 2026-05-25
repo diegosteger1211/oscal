@@ -1,0 +1,335 @@
+{
+  "assessment-results": {
+    "uuid": "d27fcb29-d4dd-58ba-9407-b96da761d596",
+    "metadata": {
+      "title": "ICS Packaging Cell Assessment Results",
+      "published": "2026-05-25T12:00:00Z",
+      "last-modified": "2026-05-25T12:00:00Z",
+      "version": "1.0.0",
+      "oscal-version": "1.2.2",
+      "roles": [
+        {
+          "id": "assessor",
+          "title": "Assessor"
+        },
+        {
+          "id": "system-owner",
+          "title": "System Owner"
+        }
+      ],
+      "parties": [
+        {
+          "uuid": "55303cd3-0d06-5bfe-ab4b-4bd844d3b3ca",
+          "type": "person",
+          "name": "Taylor OT Assessor"
+        },
+        {
+          "uuid": "64e242c5-070a-5afc-a80d-65172372a10a",
+          "type": "person",
+          "name": "Alex Asset Owner"
+        }
+      ],
+      "responsible-parties": [
+        {
+          "role-id": "assessor",
+          "party-uuids": [
+            "55303cd3-0d06-5bfe-ab4b-4bd844d3b3ca"
+          ]
+        }
+      ]
+    },
+    "import-ap": {
+      "href": "https://raw.githubusercontent.com/diegosteger1211/oscal/main/ics-packaging-cell-assessment-plan.json"
+    },
+    "results": [
+      {
+        "uuid": "72fef4c6-df4f-503b-bfd3-342a4cc4403b",
+        "title": "June 2026 ICS Packaging Cell Assessment",
+        "description": "Assessment results for Packaging Cell 17.",
+        "start": "2026-06-03T08:00:00Z",
+        "end": "2026-06-05T16:00:00Z",
+        "reviewed-controls": {
+          "control-selections": [
+            {
+              "include-controls": [
+                {
+                  "control-id": "ac-2"
+                },
+                {
+                  "control-id": "ac-3"
+                },
+                {
+                  "control-id": "ac-6.1"
+                },
+                {
+                  "control-id": "au-2"
+                },
+                {
+                  "control-id": "au-6"
+                },
+                {
+                  "control-id": "cm-2"
+                },
+                {
+                  "control-id": "cm-3"
+                },
+                {
+                  "control-id": "cm-6"
+                },
+                {
+                  "control-id": "cm-8"
+                },
+                {
+                  "control-id": "cp-9"
+                },
+                {
+                  "control-id": "cp-10"
+                },
+                {
+                  "control-id": "ia-2"
+                },
+                {
+                  "control-id": "ia-5"
+                },
+                {
+                  "control-id": "ir-4"
+                },
+                {
+                  "control-id": "ir-5"
+                },
+                {
+                  "control-id": "ma-4"
+                },
+                {
+                  "control-id": "ra-5"
+                },
+                {
+                  "control-id": "sc-7"
+                },
+                {
+                  "control-id": "sc-8"
+                },
+                {
+                  "control-id": "sc-13"
+                },
+                {
+                  "control-id": "si-2"
+                },
+                {
+                  "control-id": "si-4"
+                },
+                {
+                  "control-id": "si-7"
+                }
+              ]
+            }
+          ]
+        },
+        "observations": [
+          {
+            "uuid": "ac920094-f34b-50eb-be0c-dbf72f1315f9",
+            "title": "Firewall conduits match approved flow list",
+            "description": "The active IDMZ firewall rule base was compared with the approved conduit matrix. Direct enterprise-to-PLC access was not permitted.",
+            "methods": [
+              "EXAMINE"
+            ],
+            "collected": "2026-06-03T10:00:00Z",
+            "subjects": [
+              {
+                "type": "component",
+                "subject-uuid": "2b3b01e7-a496-5f48-b812-7fa98d9c6467"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Firewall export FW-IDMZ-01-2026-06-03 and conduit matrix CMX-17."
+              }
+            ]
+          },
+          {
+            "uuid": "214eb2a9-1f52-5f00-b9c5-c97946362501",
+            "title": "PLC restore test is not executed quarterly",
+            "description": "Backups exist, but evidence shows the last full PLC restore test was performed nine months ago.",
+            "methods": [
+              "EXAMINE",
+              "TEST"
+            ],
+            "collected": "2026-06-04T13:00:00Z",
+            "subjects": [
+              {
+                "type": "component",
+                "subject-uuid": "e24c3173-c59f-5170-aadd-8a2e759372ad"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Backup job history and offline lab restore log."
+              }
+            ]
+          },
+          {
+            "uuid": "e1bd6e94-8e53-5baa-be77-0cf47e70c8fa",
+            "title": "HMI login events are not centrally forwarded",
+            "description": "HMI login events are retained locally but are not forwarded to OT monitoring.",
+            "methods": [
+              "EXAMINE",
+              "TEST"
+            ],
+            "collected": "2026-06-05T11:00:00Z",
+            "subjects": [
+              {
+                "type": "component",
+                "subject-uuid": "68158b1a-a936-528b-a927-c7afde5324ed"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "HMI audit configuration screen and OT monitoring source list."
+              }
+            ]
+          },
+          {
+            "uuid": "35a55cff-7253-5033-bc87-e2bcf76d9c5d",
+            "title": "Engineering workstation access is restricted",
+            "description": "Only named controls engineers can start the engineering software and perform PLC downloads.",
+            "methods": [
+              "TEST"
+            ],
+            "collected": "2026-06-05T14:00:00Z",
+            "subjects": [
+              {
+                "type": "component",
+                "subject-uuid": "9ba430b9-fb76-5abc-be04-3e8ee40ad3dd"
+              }
+            ],
+            "relevant-evidence": [
+              {
+                "description": "Group membership export and engineering software access test."
+              }
+            ]
+          }
+        ],
+        "risks": [
+          {
+            "uuid": "92adf5a6-6da8-5dcb-a3e1-d8673cf2878e",
+            "title": "Delayed restore validation may extend recovery time",
+            "description": "Insufficient restore testing increases uncertainty in recovery after PLC logic corruption or controller replacement.",
+            "statement": "Restore capability for PLC programs is not demonstrated at the required frequency.",
+            "status": "open",
+            "characterizations": [
+              {
+                "origin": {
+                  "actors": [
+                    {
+                      "type": "party",
+                      "actor-uuid": "55303cd3-0d06-5bfe-ab4b-4bd844d3b3ca"
+                    }
+                  ]
+                },
+                "facets": [
+                  {
+                    "name": "likelihood",
+                    "system": "https://example.com/risk",
+                    "value": "moderate"
+                  },
+                  {
+                    "name": "impact",
+                    "system": "https://example.com/risk",
+                    "value": "high"
+                  }
+                ]
+              }
+            ],
+            "related-observations": [
+              {
+                "observation-uuid": "214eb2a9-1f52-5f00-b9c5-c97946362501"
+              }
+            ]
+          },
+          {
+            "uuid": "9efb881f-c402-5dd6-9e9b-257b109e9d63",
+            "title": "Incomplete HMI event forwarding limits detection",
+            "description": "Security-relevant HMI events are not visible to central OT monitoring.",
+            "statement": "Monitoring coverage for HMI authentication events is incomplete.",
+            "status": "open",
+            "characterizations": [
+              {
+                "origin": {
+                  "actors": [
+                    {
+                      "type": "party",
+                      "actor-uuid": "55303cd3-0d06-5bfe-ab4b-4bd844d3b3ca"
+                    }
+                  ]
+                },
+                "facets": [
+                  {
+                    "name": "likelihood",
+                    "system": "https://example.com/risk",
+                    "value": "moderate"
+                  },
+                  {
+                    "name": "impact",
+                    "system": "https://example.com/risk",
+                    "value": "moderate"
+                  }
+                ]
+              }
+            ],
+            "related-observations": [
+              {
+                "observation-uuid": "e1bd6e94-8e53-5baa-be77-0cf47e70c8fa"
+              }
+            ]
+          }
+        ],
+        "findings": [
+          {
+            "uuid": "d2a1b4ad-5fae-5ed0-9b53-ac37a84c8104",
+            "title": "CP-9 partially satisfied",
+            "description": "Backups exist, but restore testing frequency is not met for PLC logic.",
+            "target": {
+              "type": "statement-id",
+              "target-id": "cp-9_smt",
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "214eb2a9-1f52-5f00-b9c5-c97946362501"
+              }
+            ],
+            "related-risks": [
+              {
+                "risk-uuid": "92adf5a6-6da8-5dcb-a3e1-d8673cf2878e"
+              }
+            ]
+          },
+          {
+            "uuid": "857013c8-732b-5180-bc92-5f77ed82c098",
+            "title": "SI-4 partially satisfied",
+            "description": "Firewall and historian logs are centrally monitored, but HMI login events are not forwarded.",
+            "target": {
+              "type": "statement-id",
+              "target-id": "si-4_smt",
+              "status": {
+                "state": "not-satisfied"
+              }
+            },
+            "related-observations": [
+              {
+                "observation-uuid": "e1bd6e94-8e53-5baa-be77-0cf47e70c8fa"
+              }
+            ],
+            "related-risks": [
+              {
+                "risk-uuid": "9efb881f-c402-5dd6-9e9b-257b109e9d63"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

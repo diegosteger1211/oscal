@@ -1,0 +1,88 @@
+{
+  "profile": {
+    "uuid": "05c201be-0ebc-5724-8aee-34c812ba1a78",
+    "metadata": {
+      "title": "ICS Packaging Cell NIST SP 800-53 Rev. 5.2.0 OT Profile",
+      "published": "2026-05-25T12:00:00Z",
+      "last-modified": "2026-05-25T12:00:00Z",
+      "version": "1.0.0",
+      "oscal-version": "1.2.2",
+      "props": [
+        {
+          "name": "label",
+          "value": "ICS/OT Profile"
+        },
+        {
+          "name": "deployment",
+          "value": "Packaging cell with PLC, HMI, engineering workstation and historian"
+        }
+      ],
+      "roles": [
+        {
+          "id": "author",
+          "title": "Author"
+        },
+        {
+          "id": "asset-owner",
+          "title": "Asset Owner"
+        },
+        {
+          "id": "ot-security",
+          "title": "OT Security"
+        }
+      ],
+      "parties": [
+        {
+          "uuid": "e1ec55df-1441-55dc-8a0f-3eeedd2e8a19",
+          "type": "organization",
+          "name": "Example Manufacturing Plant"
+        }
+      ],
+      "responsible-parties": [
+        {
+          "role-id": "author",
+          "party-uuids": [
+            "e1ec55df-1441-55dc-8a0f-3eeedd2e8a19"
+          ]
+        }
+      ]
+    },
+    "imports": [
+      {
+        "href": "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
+        "include-controls": [
+          {
+            "with-ids": [
+              "ac-2",
+              "ac-3",
+              "ac-6.1",
+              "au-2",
+              "au-6",
+              "cm-2",
+              "cm-3",
+              "cm-6",
+              "cm-8",
+              "cp-9",
+              "cp-10",
+              "ia-2",
+              "ia-5",
+              "ir-4",
+              "ir-5",
+              "ma-4",
+              "ra-5",
+              "sc-7",
+              "sc-8",
+              "sc-13",
+              "si-2",
+              "si-4",
+              "si-7"
+            ]
+          }
+        ]
+      }
+    ],
+    "merge": {
+      "as-is": true
+    }
+  }
+}

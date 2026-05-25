@@ -1,0 +1,238 @@
+{
+  "plan-of-action-and-milestones": {
+    "uuid": "13579240-6c05-5daa-8a52-034c60af65f3",
+    "metadata": {
+      "title": "ICS Packaging Cell POA&M",
+      "published": "2026-05-25T12:00:00Z",
+      "last-modified": "2026-05-25T12:00:00Z",
+      "version": "1.0.0",
+      "oscal-version": "1.2.2",
+      "roles": [
+        {
+          "id": "system-owner",
+          "title": "System Owner"
+        },
+        {
+          "id": "ot-security",
+          "title": "OT Security"
+        },
+        {
+          "id": "maintainer",
+          "title": "Maintainer"
+        }
+      ],
+      "parties": [
+        {
+          "uuid": "64e242c5-070a-5afc-a80d-65172372a10a",
+          "type": "person",
+          "name": "Alex Asset Owner"
+        },
+        {
+          "uuid": "e7e5029e-e863-5dfd-8233-7715d48265b1",
+          "type": "person",
+          "name": "Sam OT Security Lead"
+        }
+      ],
+      "responsible-parties": [
+        {
+          "role-id": "system-owner",
+          "party-uuids": [
+            "64e242c5-070a-5afc-a80d-65172372a10a"
+          ]
+        }
+      ]
+    },
+    "import-ssp": {
+      "href": "https://raw.githubusercontent.com/diegosteger1211/oscal/main/ics-packaging-cell-ssp.json"
+    },
+    "system-id": {
+      "id": "ICS-PACKAGING-CELL-17"
+    },
+    "local-definitions": {
+      "components": [
+        {
+          "uuid": "e24c3173-c59f-5170-aadd-8a2e759372ad",
+          "type": "hardware",
+          "title": "PLC-17 Packaging Cell Controller",
+          "description": "PLC affected by restore testing remediation.",
+          "status": {
+            "state": "operational"
+          }
+        },
+        {
+          "uuid": "68158b1a-a936-528b-a927-c7afde5324ed",
+          "type": "software",
+          "title": "HMI-17 Operator Panel",
+          "description": "HMI affected by logging remediation.",
+          "status": {
+            "state": "operational"
+          }
+        }
+      ]
+    },
+    "observations": [
+      {
+        "uuid": "214eb2a9-1f52-5f00-b9c5-c97946362501",
+        "title": "PLC restore test is not executed quarterly",
+        "description": "Backups exist, but evidence shows the last full PLC restore test was performed nine months ago.",
+        "methods": [
+          "EXAMINE",
+          "TEST"
+        ],
+        "collected": "2026-06-04T13:00:00Z",
+        "subjects": [
+          {
+            "type": "component",
+            "subject-uuid": "e24c3173-c59f-5170-aadd-8a2e759372ad"
+          }
+        ]
+      },
+      {
+        "uuid": "e1bd6e94-8e53-5baa-be77-0cf47e70c8fa",
+        "title": "HMI login events are not centrally forwarded",
+        "description": "HMI login events are retained locally but are not forwarded to OT monitoring.",
+        "methods": [
+          "EXAMINE",
+          "TEST"
+        ],
+        "collected": "2026-06-05T11:00:00Z",
+        "subjects": [
+          {
+            "type": "component",
+            "subject-uuid": "68158b1a-a936-528b-a927-c7afde5324ed"
+          }
+        ]
+      }
+    ],
+    "risks": [
+      {
+        "uuid": "92adf5a6-6da8-5dcb-a3e1-d8673cf2878e",
+        "title": "Delayed restore validation may extend recovery time",
+        "description": "Insufficient restore testing increases uncertainty in recovery after PLC logic corruption or controller replacement.",
+        "statement": "Restore capability for PLC programs is not demonstrated at the required frequency.",
+        "status": "open",
+        "related-observations": [
+          {
+            "observation-uuid": "214eb2a9-1f52-5f00-b9c5-c97946362501"
+          }
+        ]
+      },
+      {
+        "uuid": "9efb881f-c402-5dd6-9e9b-257b109e9d63",
+        "title": "Incomplete HMI event forwarding limits detection",
+        "description": "Security-relevant HMI events are not visible to central OT monitoring.",
+        "statement": "Monitoring coverage for HMI authentication events is incomplete.",
+        "status": "open",
+        "related-observations": [
+          {
+            "observation-uuid": "e1bd6e94-8e53-5baa-be77-0cf47e70c8fa"
+          }
+        ]
+      }
+    ],
+    "poam-items": [
+      {
+        "uuid": "a339b751-8dee-5bdc-846e-ee6e7d3ac3ae",
+        "title": "Establish quarterly PLC/HMI restore testing",
+        "description": "Create and execute a quarterly offline restore test for PLC logic and HMI configuration, including evidence capture.",
+        "props": [
+          {
+            "name": "priority",
+            "value": "high"
+          },
+          {
+            "name": "control-id",
+            "value": "cp-9"
+          }
+        ],
+        "related-risks": [
+          {
+            "risk-uuid": "92adf5a6-6da8-5dcb-a3e1-d8673cf2878e"
+          }
+        ],
+        "origins": [
+          {
+            "actors": [
+              {
+                "type": "party",
+                "actor-uuid": "64e242c5-070a-5afc-a80d-65172372a10a"
+              }
+            ]
+          }
+        ],
+        "milestones": [
+          {
+            "uuid": "5e4a55bd-5778-5876-b986-5ec402a70176",
+            "title": "Restore procedure approved",
+            "description": "Approve restore test procedure for PLC and HMI.",
+            "due": "2026-07-15T17:00:00Z"
+          },
+          {
+            "uuid": "ac6bc51b-9f48-57fa-9f28-cf9c2ac6e83f",
+            "title": "First quarterly restore test completed",
+            "description": "Execute restore test and attach evidence.",
+            "due": "2026-08-15T17:00:00Z"
+          }
+        ]
+      },
+      {
+        "uuid": "515952e8-02d0-5205-a2c0-04efcfc81192",
+        "title": "Forward HMI authentication events to OT monitoring",
+        "description": "Configure HMI audit forwarding and verify event visibility in the OT monitoring platform.",
+        "props": [
+          {
+            "name": "priority",
+            "value": "medium"
+          },
+          {
+            "name": "control-id",
+            "value": "si-4"
+          }
+        ],
+        "related-risks": [
+          {
+            "risk-uuid": "9efb881f-c402-5dd6-9e9b-257b109e9d63"
+          }
+        ],
+        "origins": [
+          {
+            "actors": [
+              {
+                "type": "party",
+                "actor-uuid": "e7e5029e-e863-5dfd-8233-7715d48265b1"
+              }
+            ]
+          }
+        ],
+        "milestones": [
+          {
+            "uuid": "23a7d662-9beb-5b31-8a12-09dfcb4f3637",
+            "title": "HMI audit forwarding configured",
+            "description": "Enable forwarding of login, logout and failed login events.",
+            "due": "2026-07-30T17:00:00Z"
+          },
+          {
+            "uuid": "e7331e75-31fe-5121-ae17-163d5968def8",
+            "title": "Monitoring visibility verified",
+            "description": "Verify HMI authentication events appear in OT monitoring dashboards.",
+            "due": "2026-08-10T17:00:00Z"
+          }
+        ]
+      }
+    ],
+    "back-matter": {
+      "resources": [
+        {
+          "uuid": "286dd58f-fbb7-5c20-ac8f-e0c9bf61bc91",
+          "title": "Assessment Results Source",
+          "rlinks": [
+            {
+              "href": "https://raw.githubusercontent.com/diegosteger1211/oscal/main/ics-packaging-cell-assessment-results.json",
+              "media-type": "application/oscal.assessment-results+json"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

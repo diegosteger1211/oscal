@@ -1,0 +1,272 @@
+{
+  "component-definition": {
+    "uuid": "e901bd0e-c0e9-5d99-9888-e458dce856f5",
+    "metadata": {
+      "title": "ICS Packaging Cell Component Definition",
+      "published": "2026-05-25T12:00:00Z",
+      "last-modified": "2026-05-25T12:00:00Z",
+      "version": "1.0.0",
+      "oscal-version": "1.2.2",
+      "roles": [
+        {
+          "id": "provider",
+          "title": "Provider"
+        },
+        {
+          "id": "operator",
+          "title": "Operator"
+        },
+        {
+          "id": "integrator",
+          "title": "System Integrator"
+        },
+        {
+          "id": "ot-security",
+          "title": "OT Security"
+        }
+      ],
+      "parties": [
+        {
+          "uuid": "133d2158-d4bd-5d4d-8cdd-daf072f0df94",
+          "type": "organization",
+          "name": "Industrial Automation OEM"
+        },
+        {
+          "uuid": "e6dd4276-f648-5ef5-87c7-fba1affc1e3e",
+          "type": "organization",
+          "name": "Example Manufacturing Plant"
+        }
+      ]
+    },
+    "components": [
+      {
+        "uuid": "e24c3173-c59f-5170-aadd-8a2e759372ad",
+        "type": "hardware",
+        "title": "PLC-17 Packaging Cell Controller",
+        "description": "Programmable logic controller controlling conveyors, safety interlocks and packaging actuators.",
+        "purpose": "Real-time control of the packaging cell.",
+        "responsible-roles": [
+          {
+            "role-id": "provider",
+            "party-uuids": [
+              "133d2158-d4bd-5d4d-8cdd-daf072f0df94"
+            ]
+          },
+          {
+            "role-id": "operator",
+            "party-uuids": [
+              "e6dd4276-f648-5ef5-87c7-fba1affc1e3e"
+            ]
+          }
+        ],
+        "protocols": [
+          {
+            "uuid": "0c316af2-a1a8-5d59-90e4-bead559f7442",
+            "name": "profinet",
+            "title": "PROFINET IO",
+            "port-ranges": [
+              {
+                "start": 34964,
+                "end": 34964,
+                "transport": "UDP"
+              }
+            ]
+          }
+        ],
+        "props": [
+          {
+            "name": "zone",
+            "value": "OT-Control-Zone"
+          },
+          {
+            "name": "criticality",
+            "value": "high"
+          }
+        ]
+      },
+      {
+        "uuid": "68158b1a-a936-528b-a927-c7afde5324ed",
+        "type": "software",
+        "title": "HMI-17 Operator Panel",
+        "description": "Operator interface for line status, alarms and manual interventions.",
+        "purpose": "Local operation and visualization.",
+        "responsible-roles": [
+          {
+            "role-id": "operator",
+            "party-uuids": [
+              "e6dd4276-f648-5ef5-87c7-fba1affc1e3e"
+            ]
+          }
+        ],
+        "props": [
+          {
+            "name": "zone",
+            "value": "OT-Control-Zone"
+          },
+          {
+            "name": "criticality",
+            "value": "high"
+          }
+        ]
+      },
+      {
+        "uuid": "9ba430b9-fb76-5abc-be04-3e8ee40ad3dd",
+        "type": "software",
+        "title": "ENG-17 Engineering Workstation",
+        "description": "Engineering workstation used for PLC program changes, diagnostics and configuration management.",
+        "purpose": "Engineering and maintenance access.",
+        "responsible-roles": [
+          {
+            "role-id": "integrator",
+            "party-uuids": [
+              "133d2158-d4bd-5d4d-8cdd-daf072f0df94"
+            ]
+          },
+          {
+            "role-id": "operator",
+            "party-uuids": [
+              "e6dd4276-f648-5ef5-87c7-fba1affc1e3e"
+            ]
+          }
+        ],
+        "props": [
+          {
+            "name": "zone",
+            "value": "OT-Engineering-Zone"
+          },
+          {
+            "name": "criticality",
+            "value": "high"
+          }
+        ]
+      },
+      {
+        "uuid": "2b3b01e7-a496-5f48-b812-7fa98d9c6467",
+        "type": "hardware",
+        "title": "IDMZ Firewall Pair",
+        "description": "Redundant firewall pair separating OT control network, industrial DMZ and enterprise IT.",
+        "purpose": "Network segmentation and controlled data exchange.",
+        "responsible-roles": [
+          {
+            "role-id": "ot-security",
+            "party-uuids": [
+              "e6dd4276-f648-5ef5-87c7-fba1affc1e3e"
+            ]
+          }
+        ],
+        "props": [
+          {
+            "name": "zone",
+            "value": "IDMZ"
+          },
+          {
+            "name": "criticality",
+            "value": "high"
+          }
+        ]
+      },
+      {
+        "uuid": "7a85ce8b-2dac-5eab-942d-97e12afb947a",
+        "type": "service",
+        "title": "OT Historian",
+        "description": "Historian service collecting process tags and alarm events from the packaging cell.",
+        "purpose": "Time-series collection and controlled data forwarding to MES/reporting.",
+        "protocols": [
+          {
+            "uuid": "75174d07-a7a1-561a-8eb6-45aca0a7d0d7",
+            "name": "opcua",
+            "title": "OPC UA",
+            "port-ranges": [
+              {
+                "start": 4840,
+                "end": 4840,
+                "transport": "TCP"
+              }
+            ]
+          }
+        ],
+        "props": [
+          {
+            "name": "zone",
+            "value": "IDMZ"
+          },
+          {
+            "name": "criticality",
+            "value": "medium"
+          }
+        ]
+      }
+    ],
+    "capabilities": [
+      {
+        "uuid": "ea1c9477-aba1-524c-9fae-4e6012b63c61",
+        "name": "ot-network-segmentation",
+        "description": "Enforces conduits between OT zones, IDMZ and enterprise network."
+      },
+      {
+        "uuid": "7fc47876-aa68-53ea-a061-daf49fa1115d",
+        "name": "controlled-engineering-change",
+        "description": "Controls PLC logic upload/download and documents engineering changes."
+      },
+      {
+        "uuid": "7301c4db-e254-5f33-baed-a62f251ce3bb",
+        "name": "ot-security-logging",
+        "description": "Collects firewall, HMI, engineering workstation and historian logs."
+      }
+    ],
+    "control-implementations": [
+      {
+        "uuid": "d94033c0-e5f5-587a-933f-3c6942ea8496",
+        "source": "https://raw.githubusercontent.com/diegosteger1211/oscal/main/ics-packaging-cell-profile.json",
+        "description": "Reusable control implementation statements for the ICS packaging cell.",
+        "implemented-requirements": [
+          {
+            "uuid": "b7ba8dbd-63a3-5b34-8ec4-3f9b1a4e34e5",
+            "control-id": "sc-7",
+            "description": "The IDMZ firewall pair restricts conduits between enterprise IT, IDMZ and OT control zones to explicitly approved flows.",
+            "by-components": [
+              {
+                "uuid": "28d0aa13-66a6-58e9-aaec-02ee7672be82",
+                "component-uuid": "2b3b01e7-a496-5f48-b812-7fa98d9c6467",
+                "description": "Firewall policy allows OPC UA historian replication and jump-host administration only; direct enterprise-to-PLC access is denied.",
+                "implementation-status": {
+                  "state": "implemented"
+                }
+              }
+            ]
+          },
+          {
+            "uuid": "16eb6f8a-4172-5f19-9dc8-65b85f66f529",
+            "control-id": "cm-3",
+            "description": "PLC and HMI configuration changes require approved maintenance tickets and engineering workstation use.",
+            "by-components": [
+              {
+                "uuid": "87c28133-3036-52df-8f5d-0f63265ac4b7",
+                "component-uuid": "9ba430b9-fb76-5abc-be04-3e8ee40ad3dd",
+                "description": "Engineering software stores change packages in version control and records upload/download events.",
+                "implementation-status": {
+                  "state": "implemented"
+                }
+              }
+            ]
+          },
+          {
+            "uuid": "d5b99af5-638d-54f7-9e32-e88ab4581f67",
+            "control-id": "si-4",
+            "description": "Security monitoring covers firewall events, HMI authentication events, engineering workstation activity and historian service status.",
+            "by-components": [
+              {
+                "uuid": "a422fe1c-1814-50d5-a5ce-e4f73a90db51",
+                "component-uuid": "7a85ce8b-2dac-5eab-942d-97e12afb947a",
+                "description": "Historian forwards relevant security and system logs to the OT monitoring platform.",
+                "implementation-status": {
+                  "state": "implemented"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

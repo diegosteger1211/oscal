@@ -1,0 +1,368 @@
+{
+  "assessment-plan": {
+    "uuid": "d77ebc34-2a4c-5690-95dc-fbbb10b1d783",
+    "metadata": {
+      "title": "ICS Packaging Cell Assessment Plan",
+      "published": "2026-05-25T12:00:00Z",
+      "last-modified": "2026-05-25T12:00:00Z",
+      "version": "1.0.0",
+      "oscal-version": "1.2.2",
+      "roles": [
+        {
+          "id": "assessor",
+          "title": "Assessor"
+        },
+        {
+          "id": "system-owner",
+          "title": "System Owner"
+        },
+        {
+          "id": "ot-security",
+          "title": "OT Security"
+        }
+      ],
+      "parties": [
+        {
+          "uuid": "55303cd3-0d06-5bfe-ab4b-4bd844d3b3ca",
+          "type": "person",
+          "name": "Taylor OT Assessor"
+        },
+        {
+          "uuid": "64e242c5-070a-5afc-a80d-65172372a10a",
+          "type": "person",
+          "name": "Alex Asset Owner"
+        },
+        {
+          "uuid": "e7e5029e-e863-5dfd-8233-7715d48265b1",
+          "type": "person",
+          "name": "Sam OT Security Lead"
+        }
+      ],
+      "responsible-parties": [
+        {
+          "role-id": "assessor",
+          "party-uuids": [
+            "55303cd3-0d06-5bfe-ab4b-4bd844d3b3ca"
+          ]
+        }
+      ]
+    },
+    "import-ssp": {
+      "href": "https://raw.githubusercontent.com/diegosteger1211/oscal/main/ics-packaging-cell-ssp.json"
+    },
+    "local-definitions": {
+      "activities": [
+        {
+          "uuid": "c6295f7c-591c-5656-b92f-6ca8fad618ee",
+          "title": "Review IDMZ Firewall Rules",
+          "description": "Examine approved firewall rule base, compare active policy against documented conduits, and interview OT security owner.",
+          "props": [
+            {
+              "name": "method",
+              "value": "EXAMINE"
+            },
+            {
+              "name": "method",
+              "value": "INTERVIEW"
+            }
+          ],
+          "related-controls": {
+            "control-selections": [
+              {
+                "include-controls": [
+                  {
+                    "control-id": "sc-7"
+                  },
+                  {
+                    "control-id": "ac-3"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "uuid": "ab3dab72-18e7-5979-be05-fee5926d4c20",
+          "title": "Perform PLC and HMI Restore Test",
+          "description": "Test restoration of PLC program and HMI configuration in an offline lab environment.",
+          "props": [
+            {
+              "name": "method",
+              "value": "TEST"
+            }
+          ],
+          "related-controls": {
+            "control-selections": [
+              {
+                "include-controls": [
+                  {
+                    "control-id": "cp-9"
+                  },
+                  {
+                    "control-id": "cp-10"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "uuid": "2f9d2ae2-e10c-5142-8bd1-d5b80ae4181c",
+          "title": "Assess Engineering Workstation Access",
+          "description": "Verify account management, least privilege and engineering software access restrictions.",
+          "props": [
+            {
+              "name": "method",
+              "value": "EXAMINE"
+            },
+            {
+              "name": "method",
+              "value": "TEST"
+            }
+          ],
+          "related-controls": {
+            "control-selections": [
+              {
+                "include-controls": [
+                  {
+                    "control-id": "ac-2"
+                  },
+                  {
+                    "control-id": "ac-6.1"
+                  },
+                  {
+                    "control-id": "ia-2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "uuid": "28a10bb2-3e8c-50d1-a7f2-4c3474b33d8f",
+          "title": "Assess OT Security Monitoring",
+          "description": "Inspect log sources and confirm that firewall, HMI and historian security events are available to OT monitoring.",
+          "props": [
+            {
+              "name": "method",
+              "value": "EXAMINE"
+            },
+            {
+              "name": "method",
+              "value": "TEST"
+            }
+          ],
+          "related-controls": {
+            "control-selections": [
+              {
+                "include-controls": [
+                  {
+                    "control-id": "au-2"
+                  },
+                  {
+                    "control-id": "au-6"
+                  },
+                  {
+                    "control-id": "si-4"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "reviewed-controls": {
+      "description": "Controls selected for the ICS packaging cell assessment.",
+      "control-selections": [
+        {
+          "include-controls": [
+            {
+              "control-id": "ac-2"
+            },
+            {
+              "control-id": "ac-3"
+            },
+            {
+              "control-id": "ac-6.1"
+            },
+            {
+              "control-id": "au-2"
+            },
+            {
+              "control-id": "au-6"
+            },
+            {
+              "control-id": "cm-2"
+            },
+            {
+              "control-id": "cm-3"
+            },
+            {
+              "control-id": "cm-6"
+            },
+            {
+              "control-id": "cm-8"
+            },
+            {
+              "control-id": "cp-9"
+            },
+            {
+              "control-id": "cp-10"
+            },
+            {
+              "control-id": "ia-2"
+            },
+            {
+              "control-id": "ia-5"
+            },
+            {
+              "control-id": "ir-4"
+            },
+            {
+              "control-id": "ir-5"
+            },
+            {
+              "control-id": "ma-4"
+            },
+            {
+              "control-id": "ra-5"
+            },
+            {
+              "control-id": "sc-7"
+            },
+            {
+              "control-id": "sc-8"
+            },
+            {
+              "control-id": "sc-13"
+            },
+            {
+              "control-id": "si-2"
+            },
+            {
+              "control-id": "si-4"
+            },
+            {
+              "control-id": "si-7"
+            }
+          ]
+        }
+      ],
+      "control-objective-selections": [
+        {
+          "include-all": {}
+        }
+      ]
+    },
+    "assessment-subjects": [
+      {
+        "uuid": "69710a08-44f8-581e-896e-374f363d219b",
+        "type": "component",
+        "description": "All in-scope ICS components in the Packaging Cell 17 authorization boundary.",
+        "include-all": {}
+      }
+    ],
+    "tasks": [
+      {
+        "uuid": "c35a4fc8-ae92-5108-8db2-260f6200d2d1",
+        "type": "action",
+        "title": "Firewall Segmentation Assessment",
+        "timing": {
+          "within-date-range": {
+            "start": "2026-06-03T08:00:00Z",
+            "end": "2026-06-03T12:00:00Z"
+          }
+        },
+        "associated-activities": [
+          {
+            "activity-uuid": "c6295f7c-591c-5656-b92f-6ca8fad618ee",
+            "subjects": [
+              {
+                "type": "component",
+                "include-all": {}
+              }
+            ]
+          }
+        ],
+        "responsible-roles": [
+          {
+            "role-id": "assessor",
+            "party-uuids": [
+              "55303cd3-0d06-5bfe-ab4b-4bd844d3b3ca"
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "4dfa9329-fa94-5783-9e94-13a9ebb0013c",
+        "type": "action",
+        "title": "Backup and Restore Assessment",
+        "timing": {
+          "within-date-range": {
+            "start": "2026-06-04T08:00:00Z",
+            "end": "2026-06-04T15:00:00Z"
+          }
+        },
+        "associated-activities": [
+          {
+            "activity-uuid": "ab3dab72-18e7-5979-be05-fee5926d4c20",
+            "subjects": [
+              {
+                "type": "component",
+                "include-all": {}
+              }
+            ]
+          }
+        ],
+        "responsible-roles": [
+          {
+            "role-id": "assessor",
+            "party-uuids": [
+              "55303cd3-0d06-5bfe-ab4b-4bd844d3b3ca"
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "59abdb51-a263-5551-9bb7-2e704429be7a",
+        "type": "action",
+        "title": "Access and Monitoring Assessment",
+        "timing": {
+          "within-date-range": {
+            "start": "2026-06-05T08:00:00Z",
+            "end": "2026-06-05T16:00:00Z"
+          }
+        },
+        "associated-activities": [
+          {
+            "activity-uuid": "2f9d2ae2-e10c-5142-8bd1-d5b80ae4181c",
+            "subjects": [
+              {
+                "type": "component",
+                "include-all": {}
+              }
+            ]
+          },
+          {
+            "activity-uuid": "28a10bb2-3e8c-50d1-a7f2-4c3474b33d8f",
+            "subjects": [
+              {
+                "type": "component",
+                "include-all": {}
+              }
+            ]
+          }
+        ],
+        "responsible-roles": [
+          {
+            "role-id": "assessor",
+            "party-uuids": [
+              "55303cd3-0d06-5bfe-ab4b-4bd844d3b3ca"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

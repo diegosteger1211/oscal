@@ -1,0 +1,439 @@
+{
+  "system-security-plan": {
+    "uuid": "ef6eb44d-46d8-52ab-8024-e0d970c86e06",
+    "metadata": {
+      "title": "ICS Packaging Cell System Security Plan",
+      "published": "2026-05-25T12:00:00Z",
+      "last-modified": "2026-05-25T12:00:00Z",
+      "version": "1.0.0",
+      "oscal-version": "1.2.2",
+      "roles": [
+        {
+          "id": "system-owner",
+          "title": "System Owner"
+        },
+        {
+          "id": "ot-security",
+          "title": "OT Security"
+        },
+        {
+          "id": "maintainer",
+          "title": "Maintainer"
+        }
+      ],
+      "parties": [
+        {
+          "uuid": "e6dd4276-f648-5ef5-87c7-fba1affc1e3e",
+          "type": "organization",
+          "name": "Example Manufacturing Plant"
+        },
+        {
+          "uuid": "64e242c5-070a-5afc-a80d-65172372a10a",
+          "type": "person",
+          "name": "Alex Asset Owner"
+        },
+        {
+          "uuid": "e7e5029e-e863-5dfd-8233-7715d48265b1",
+          "type": "person",
+          "name": "Sam OT Security Lead"
+        }
+      ],
+      "responsible-parties": [
+        {
+          "role-id": "system-owner",
+          "party-uuids": [
+            "64e242c5-070a-5afc-a80d-65172372a10a"
+          ]
+        },
+        {
+          "role-id": "ot-security",
+          "party-uuids": [
+            "e7e5029e-e863-5dfd-8233-7715d48265b1"
+          ]
+        }
+      ]
+    },
+    "import-profile": {
+      "href": "https://raw.githubusercontent.com/diegosteger1211/oscal/main/ics-packaging-cell-profile.json"
+    },
+    "system-characteristics": {
+      "system-ids": [
+        {
+          "id": "ICS-PACKAGING-CELL-17",
+          "identifier-type": "https://example.com/system-id"
+        }
+      ],
+      "system-name": "Packaging Cell 17 Control System",
+      "description": "Control system for an automated packaging cell with PLC, HMI, engineering workstation, IDMZ firewall and historian.",
+      "security-sensitivity-level": "moderate",
+      "system-information": {
+        "information-types": [
+          {
+            "uuid": "b25628c7-aa1d-5614-8326-93edb65ea914",
+            "title": "PLC Programs and Recipes",
+            "description": "Control logic, parameters and packaging recipes.",
+            "confidentiality-impact": {
+              "base": "fips-199-moderate"
+            },
+            "integrity-impact": {
+              "base": "fips-199-high"
+            },
+            "availability-impact": {
+              "base": "fips-199-high"
+            }
+          },
+          {
+            "uuid": "885cd692-bbb9-5be9-9fc7-ae661802f321",
+            "title": "Process and Alarm Data",
+            "description": "Historian tags, alarms and production counters.",
+            "confidentiality-impact": {
+              "base": "fips-199-low"
+            },
+            "integrity-impact": {
+              "base": "fips-199-moderate"
+            },
+            "availability-impact": {
+              "base": "fips-199-moderate"
+            }
+          }
+        ]
+      },
+      "security-impact-level": {
+        "security-objective-confidentiality": "fips-199-moderate",
+        "security-objective-integrity": "fips-199-high",
+        "security-objective-availability": "fips-199-high"
+      },
+      "status": {
+        "state": "operational"
+      },
+      "authorization-boundary": {
+        "description": "PLC, HMI, engineering workstation, cell switches, IDMZ firewall interfaces and historian connectivity for Packaging Cell 17."
+      },
+      "network-architecture": {
+        "description": "The cell is segmented into OT-Control-Zone, OT-Engineering-Zone and IDMZ. Only controlled conduits through the IDMZ firewall are permitted."
+      }
+    },
+    "system-implementation": {
+      "users": [
+        {
+          "uuid": "4d275c0d-3d41-5f1e-9f63-89c48336f2f4",
+          "title": "Cell Operator",
+          "role-ids": [
+            "maintainer"
+          ],
+          "authorized-privileges": [
+            {
+              "title": "Operate HMI",
+              "description": "Operate packaging cell using assigned HMI role."
+            }
+          ]
+        },
+        {
+          "uuid": "086bba8c-edce-51e4-a506-117ccbd8e189",
+          "title": "Controls Engineer",
+          "role-ids": [
+            "maintainer"
+          ],
+          "authorized-privileges": [
+            {
+              "title": "PLC Change",
+              "description": "Change PLC logic during approved maintenance windows."
+            }
+          ]
+        }
+      ],
+      "components": [
+        {
+          "uuid": "e24c3173-c59f-5170-aadd-8a2e759372ad",
+          "type": "hardware",
+          "title": "PLC-17 Packaging Cell Controller",
+          "description": "PLC in the OT control zone.",
+          "status": {
+            "state": "operational"
+          },
+          "props": [
+            {
+              "name": "asset-id",
+              "value": "PLC-17"
+            }
+          ]
+        },
+        {
+          "uuid": "68158b1a-a936-528b-a927-c7afde5324ed",
+          "type": "software",
+          "title": "HMI-17 Operator Panel",
+          "description": "HMI runtime and operator panel.",
+          "status": {
+            "state": "operational"
+          },
+          "props": [
+            {
+              "name": "asset-id",
+              "value": "HMI-17"
+            }
+          ]
+        },
+        {
+          "uuid": "9ba430b9-fb76-5abc-be04-3e8ee40ad3dd",
+          "type": "software",
+          "title": "ENG-17 Engineering Workstation",
+          "description": "Engineering workstation for PLC and HMI changes.",
+          "status": {
+            "state": "operational"
+          },
+          "props": [
+            {
+              "name": "asset-id",
+              "value": "ENG-17"
+            }
+          ]
+        },
+        {
+          "uuid": "2b3b01e7-a496-5f48-b812-7fa98d9c6467",
+          "type": "hardware",
+          "title": "IDMZ Firewall Pair",
+          "description": "Redundant firewalls between zones.",
+          "status": {
+            "state": "operational"
+          },
+          "props": [
+            {
+              "name": "asset-id",
+              "value": "FW-IDMZ-01"
+            }
+          ]
+        },
+        {
+          "uuid": "7a85ce8b-2dac-5eab-942d-97e12afb947a",
+          "type": "service",
+          "title": "OT Historian",
+          "description": "Historian server in the IDMZ.",
+          "status": {
+            "state": "operational"
+          },
+          "props": [
+            {
+              "name": "asset-id",
+              "value": "HIST-17"
+            }
+          ]
+        }
+      ],
+      "inventory-items": [
+        {
+          "uuid": "959fa3cd-4817-5b74-b4d5-bc823a0a6941",
+          "description": "PLC hardware asset in control cabinet CC-17.",
+          "implemented-components": [
+            {
+              "component-uuid": "e24c3173-c59f-5170-aadd-8a2e759372ad"
+            }
+          ]
+        },
+        {
+          "uuid": "156d5337-fd53-5957-805c-1bae644e185c",
+          "description": "HMI panel at packaging line 17.",
+          "implemented-components": [
+            {
+              "component-uuid": "68158b1a-a936-528b-a927-c7afde5324ed"
+            }
+          ]
+        },
+        {
+          "uuid": "075e8e46-da91-5e65-9601-1f51cf6b8c3d",
+          "description": "Firewall cluster for IDMZ conduits.",
+          "implemented-components": [
+            {
+              "component-uuid": "2b3b01e7-a496-5f48-b812-7fa98d9c6467"
+            }
+          ]
+        }
+      ]
+    },
+    "control-implementation": {
+      "description": "Implementation of selected NIST SP 800-53 controls for the ICS packaging cell.",
+      "implemented-requirements": [
+        {
+          "uuid": "86594bc6-8f12-5b6a-b3c1-727aaf041159",
+          "control-id": "ac-2",
+          "description": "Operator, engineer and service accounts are managed through named accounts. Shared default accounts are disabled where supported.",
+          "by-components": [
+            {
+              "uuid": "da0fbd87-3dd8-5b0d-922c-7ae6755d4abf",
+              "component-uuid": "68158b1a-a936-528b-a927-c7afde5324ed",
+              "description": "HMI users are role-based and reviewed quarterly.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "uuid": "08f2bc0a-5c3b-59d7-86fb-e38d6b201214",
+              "component-uuid": "9ba430b9-fb76-5abc-be04-3e8ee40ad3dd",
+              "description": "Engineering workstation access is integrated with named domain accounts.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "644889b2-d467-5ddf-8c68-adc62c50ea79",
+          "control-id": "ac-6.1",
+          "description": "Privileged engineering access is limited to approved controls engineers and used only during maintenance windows.",
+          "by-components": [
+            {
+              "uuid": "56e56c30-1b64-563a-b401-616b479d42ac",
+              "component-uuid": "9ba430b9-fb76-5abc-be04-3e8ee40ad3dd",
+              "description": "Engineering software is restricted to the controls engineering group.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "8ffcb18c-84f2-59e0-a0dd-5c94066bb64b",
+          "control-id": "cm-3",
+          "description": "Changes to PLC logic, HMI screens and firewall rules require change tickets, approvals and post-change verification.",
+          "by-components": [
+            {
+              "uuid": "fae6cc80-77af-5542-92ae-e9e10513c8a4",
+              "component-uuid": "e24c3173-c59f-5170-aadd-8a2e759372ad",
+              "description": "PLC program changes are stored in version control and compared before download.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "uuid": "4f5f0a83-4a1e-54df-975b-fe005da4f79f",
+              "component-uuid": "2b3b01e7-a496-5f48-b812-7fa98d9c6467",
+              "description": "Firewall rule changes are peer reviewed and logged.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "099d1ca9-8ff4-500d-b3da-2eaed8478746",
+          "control-id": "cm-8",
+          "description": "The OT asset inventory tracks PLCs, HMIs, engineering workstations, network devices and historian services.",
+          "by-components": [
+            {
+              "uuid": "a6a658cb-8a77-5e87-9d66-6892b438ec4d",
+              "component-uuid": "7a85ce8b-2dac-5eab-942d-97e12afb947a",
+              "description": "Historian and OT discovery data populate the asset inventory.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "00ddd2ae-de13-5f52-b40d-85301b2389bb",
+          "control-id": "cp-9",
+          "description": "PLC programs, HMI configurations, firewall policies and historian configuration are backed up.",
+          "by-components": [
+            {
+              "uuid": "308cb2ae-8969-5d6e-921b-7d95994c0082",
+              "component-uuid": "e24c3173-c59f-5170-aadd-8a2e759372ad",
+              "description": "PLC logic backup is performed after approved changes.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "uuid": "17ea7b4c-7dce-5dda-9e01-7bcd628da576",
+              "component-uuid": "7a85ce8b-2dac-5eab-942d-97e12afb947a",
+              "description": "Historian configuration and selected data are included in server backups.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "acc49f99-de99-5ff8-883a-8f6f1d06bcdf",
+          "control-id": "sc-7",
+          "description": "The IDMZ firewall enforces conduits between OT zones, IDMZ and enterprise IT.",
+          "by-components": [
+            {
+              "uuid": "6c405362-de9e-5f42-aaa3-8e6de7bafc53",
+              "component-uuid": "2b3b01e7-a496-5f48-b812-7fa98d9c6467",
+              "description": "Default-deny policy is used between zones. Only documented flows are allowed.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "b46772c8-2ae4-5c6c-a3e2-be7c8ac6e0d9",
+          "control-id": "sc-8",
+          "description": "Historian OPC UA connections and administration connections use encrypted sessions where supported.",
+          "by-components": [
+            {
+              "uuid": "a1594783-bb47-577d-af5e-03b12aef590b",
+              "component-uuid": "7a85ce8b-2dac-5eab-942d-97e12afb947a",
+              "description": "OPC UA security policy is configured for encrypted communication.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "d415b398-91f0-5f6e-b9ab-138767e85d32",
+          "control-id": "si-2",
+          "description": "Patch applicability is evaluated for engineering workstation, HMI runtime and historian servers.",
+          "by-components": [
+            {
+              "uuid": "eecb8578-e0e9-55cc-ba1b-70fa996e3a1a",
+              "component-uuid": "9ba430b9-fb76-5abc-be04-3e8ee40ad3dd",
+              "description": "Engineering workstation patches are tested before deployment.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "6fc91760-ba57-53e4-a86d-27b4504f930b",
+          "control-id": "si-4",
+          "description": "Firewall logs, Windows security events, HMI audit events and historian service events are collected for monitoring.",
+          "by-components": [
+            {
+              "uuid": "b8383377-5647-5821-a574-d2ba9e0d7914",
+              "component-uuid": "2b3b01e7-a496-5f48-b812-7fa98d9c6467",
+              "description": "Firewall denies and admin changes are forwarded to OT monitoring.",
+              "implementation-status": {
+                "state": "implemented"
+              }
+            },
+            {
+              "uuid": "ff4eac2d-8c98-5f34-925f-f95d010fa98f",
+              "component-uuid": "68158b1a-a936-528b-a927-c7afde5324ed",
+              "description": "HMI login events are logged locally; central forwarding is not complete.",
+              "implementation-status": {
+                "state": "partial"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "back-matter": {
+      "resources": [
+        {
+          "uuid": "209b58f7-8de4-56ed-830d-14931132962a",
+          "title": "ICS Packaging Cell Component Definition",
+          "rlinks": [
+            {
+              "href": "https://raw.githubusercontent.com/diegosteger1211/oscal/main/ics-packaging-cell-component-definition.json",
+              "media-type": "application/oscal.component-definition+json"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
